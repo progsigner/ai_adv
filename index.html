@@ -1,1 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Advanced 핵심 강의 공부 노트</title>
+  <style>
+    :root{--bg:#f7f9fc;--card:#fff;--ink:#1f2937;--muted:#6b7280;--blue:#2563eb;--soft:#eaf2ff;--line:#dbe3ef;--accent:#0f766e;--warn:#f59e0b;}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Arial,sans-serif;line-height:1.65}
+    header{background:linear-gradient(135deg,#1d4ed8,#0f766e);color:white;padding:44px 24px;text-align:center}
+    header h1{margin:0 0 8px;font-size:32px} header p{margin:0;opacity:.9}
+    main{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+    nav{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:22px;box-shadow:0 4px 16px rgba(15,23,42,.05)}
+    nav a{display:inline-block;margin:6px 10px 6px 0;padding:7px 12px;background:var(--soft);border-radius:999px;color:#1d4ed8;text-decoration:none;font-weight:700;font-size:14px}
+    section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;margin:18px 0;box-shadow:0 4px 16px rgba(15,23,42,.05)}
+    h2{margin:0 0 14px;color:#1d4ed8;border-bottom:2px solid var(--line);padding-bottom:8px} h3{margin:24px 0 8px;color:#0f766e}
+    .tag{display:inline-block;background:#eef6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:700;margin-left:6px}
+    table{width:100%;border-collapse:collapse;margin:12px 0} th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top} th{background:#eff6ff;color:#1e40af}
+    code,pre{font-family:"SFMono-Regular",Consolas,monospace} pre{background:#0f172a;color:#e5e7eb;border-radius:12px;padding:14px;overflow:auto} code{background:#f1f5f9;padding:2px 5px;border-radius:6px}
+    .flow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.step{background:#ecfeff;border:1px solid #99f6e4;color:#115e59;border-radius:12px;padding:8px 12px;font-weight:700}.arrow{align-self:center;color:var(--muted)}
+    .box{border-left:5px solid var(--blue);background:#f8fbff;padding:12px 14px;border-radius:10px;margin:12px 0}.warn{border-left-color:var(--warn);background:#fffbeb}.quiz{border-left-color:#9333ea;background:#faf5ff}
+    .memorize{font-size:18px;font-weight:800;color:#111827}.muted{color:var(--muted)}
+    footer{text-align:center;color:var(--muted);font-size:13px;margin-top:30px}
+    @media print{nav{display:none}body{background:white}section{break-inside:avoid;box-shadow:none}.step{border:1px solid #aaa}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>AI Advanced 핵심 강의 공부 노트</h1>
+  <p>Python · 데이터 전처리 · LLM · Prompt Engineering · RAG · Fine-Tuning</p>
+</header>
+<main>
+  <nav>
+    <strong>목차</strong><br>
+    <a href="#python">Python 기초</a><a href="#preprocess">데이터 전처리</a><a href="#llm">LLM</a><a href="#prompt">Prompt Engineering</a><a href="#rag">RAG</a><a href="#finetune">Fine-Tuning</a><a href="#final">시험 직전 암기</a>
+  </nav>
 
+  <section id="python">
+    <h2>1. Python 기초 <span class="tag">기본기</span></h2>
+    <table><tr><th>개념</th><th>핵심</th><th>암기 포인트</th></tr><tr><td>List</td><td>순서가 있고 값 변경 가능</td><td><code>[1, 'a']</code></td></tr><tr><td>Tuple</td><td>순서가 있지만 값 변경 불가</td><td><code>(23, 92)</code></td></tr><tr><td>Dictionary</td><td>Key로 Value를 찾는 구조</td><td><code>{'name':'홍길동'}</code></td></tr></table>
+    <h3>반복문</h3><pre>for 변수 in iterable:
+    반복 실행할 코드</pre>
+    <p><code>range()</code>는 숫자 시퀀스, <code>enumerate()</code>는 인덱스와 값, <code>zip()</code>은 여러 시퀀스를 동시에 순회할 때 사용합니다.</p>
+    <h3>모듈·패키지·예외처리·클래스</h3>
+    <ul><li><b>모듈</b>: Python 파일 하나, <code>import</code>로 재사용</li><li><b>패키지</b>: 여러 모듈을 폴더로 묶은 구조</li><li><b>예외처리</b>: <code>try-except-finally</code>로 오류 상황 처리</li><li><b>클래스</b>: 데이터(속성)와 기능(메서드)을 묶는 설계도</li><li><b>상속</b>: 부모 클래스를 확장해 코드 재사용</li><li><b>오버라이딩</b>: 부모 메서드를 자식 클래스에서 재정의, <code>super()</code>는 부모 메서드 호출</li></ul>
+  </section>
+
+  <section id="preprocess">
+    <h2>2. 데이터 전처리 <span class="tag">중요</span></h2>
+    <h3>Numpy / Pandas</h3>
+    <table><tr><th>도구</th><th>핵심 기능</th><th>주요 함수</th></tr><tr><td>Numpy</td><td>배열·벡터·행렬 연산</td><td><code>np.array</code>, <code>A @ B</code>, <code>A.T</code></td></tr><tr><td>Pandas</td><td>표 형태 데이터 분석</td><td><code>df.shape</code>, <code>df.info()</code>, <code>pd.read_csv()</code></td></tr></table>
+    <h3>텍스트 전처리 순서</h3>
+    <div class="flow"><span class="step">Cleaning</span><span class="arrow">→</span><span class="step">Regex</span><span class="arrow">→</span><span class="step">Tokenization</span><span class="arrow">→</span><span class="step">Normalization</span><span class="arrow">→</span><span class="step">Stopwords 제거</span></div>
+    <div class="box"><b>Cleaning</b>: HTML, URL, 이모지, 특수문자 제거<br><b>Regex</b>: 패턴 기반 검색·치환. <code>\d+</code> 숫자, <code>[가-힣]+</code> 한글, <code>[a-zA-Z]+</code> 영문<br><b>Tokenization</b>: 문장/단어/형태소 단위 분리<br><b>Normalization</b>: 대소문자 통일, 숫자 치환, 반복문자 축소<br><b>Stopwords</b>: 의미 없는 조사·접속사 제거</div>
+    <h3>텍스트 수치화</h3>
+    <ul><li><b>Bag of Words</b>: 단어 출현 횟수 벡터화. 빠르지만 순서 정보 손실</li><li><b>TF-IDF</b>: 단어 빈도 × 역문서 빈도. 흔한 단어의 중요도는 낮춤</li><li><b>문서 유사도</b>: 코사인 유사도는 방향, 유클리드 거리는 직선 거리</li></ul>
+  </section>
+
+  <section id="llm">
+    <h2>3. LLM 핵심 <span class="tag">최중요</span></h2>
+    <h3>임베딩</h3><p>단어·문장 같은 추상적 데이터를 컴퓨터가 계산할 수 있는 <b>Dense Vector</b>로 바꾸는 과정입니다.</p>
+    <h3>Transformer</h3>
+    <div class="box"><b>Transformer = Attention 기반 Seq2Seq 모델</b><br>Encoder는 입력 문장의 의미를 벡터로 계산하고, Decoder는 그 결과를 바탕으로 목표 문장을 순차 생성합니다.</div>
+    <table><tr><th>개념</th><th>한 줄 정의</th><th>시험 포인트</th></tr><tr><td>Positional Encoding</td><td>토큰 위치 정보를 추가</td><td>Transformer는 순서를 모르므로 필요</td></tr><tr><td>Self-Attention</td><td>각 토큰이 다른 토큰과의 중요도를 계산</td><td>문맥 반영의 핵심</td></tr><tr><td>Multi-Head Attention</td><td>여러 Attention을 병렬 수행</td><td>다양한 관계를 학습</td></tr><tr><td>Masked Self-Attention</td><td>미래 토큰을 보지 못하게 차단</td><td>생성 모델에서 필수</td></tr><tr><td>FFNN</td><td>Attention 뒤의 비선형 변환</td><td>표현력 강화</td></tr></table>
+    <h3>Encoder vs Decoder</h3>
+    <table><tr><th>구분</th><th>역할</th><th>대표 모델</th></tr><tr><td>Encoder</td><td>문장 이해, 양방향 문맥 참조</td><td>BERT</td></tr><tr><td>Decoder</td><td>다음 토큰 예측, 이전 토큰만 참조</td><td>GPT</td></tr></table>
+    <h3>GPT</h3><p class="memorize">GPT의 핵심 원리 = Next Token Prediction</p><p>주어진 문맥에서 다음 토큰을 예측하고, 생성된 토큰을 다시 입력에 추가하여 이어서 생성합니다. 이를 자기회귀적(Autoregressive) 생성이라고 합니다.</p>
+    <h3>LLM 최적화·발전</h3><ul><li><b>MoE</b>: 여러 전문가 MLP 중 일부만 활성화</li><li><b>Quantization</b>: 가중치를 INT8/INT4 등으로 압축해 VRAM 절약</li><li><b>sLLM</b>: 작은 모델을 증류·가지치기·파인튜닝으로 특화</li><li><b>Tool Calling / Agent</b>: 외부 API·검색·코드 실행 도구를 호출해 답변</li></ul>
+  </section>
+
+  <section id="prompt">
+    <h2>4. Prompt Engineering <span class="tag">실무형</span></h2>
+    <div class="box"><b>좋은 프롬프트 4요소</b><br>Persona: 역할 / Task: 작업 / Context: 참고정보 / Format: 출력 형식</div>
+    <h3>주요 기법</h3>
+    <table><tr><th>기법</th><th>의미</th><th>사용 상황</th></tr><tr><td>Few-shot</td><td>예시를 프롬프트에 포함</td><td>출력 패턴을 맞추고 싶을 때</td></tr><tr><td>Prompt Chaining</td><td>복잡한 작업을 나눠 처리</td><td>긴 분석·복합 업무</td></tr><tr><td>CoT</td><td>추론 과정을 유도</td><td>수학·논리 문제</td></tr><tr><td>Step-back</td><td>답 전에 필요한 원리부터 도출</td><td>추상화가 필요한 문제</td></tr><tr><td>ReAct</td><td>Reasoning + Acting</td><td>도구 사용 Agent</td></tr></table>
+    <h3>LangChain LCEL</h3><pre>chain = prompt | llm | parser
+result = chain.invoke({"input": "..."})</pre><p>LCEL은 Prompt, LLM, Parser, Tool 등을 파이프(<code>|</code>)로 연결하는 방식입니다.</p>
+  </section>
+
+  <section id="rag">
+    <h2>5. RAG <span class="tag">최중요</span></h2>
+    <div class="box warn"><b>RAG가 필요한 이유</b><br>LLM은 최신 데이터, 내부 데이터, 도메인 특화 데이터에 약할 수 있습니다. 관련 문서를 검색해서 Context로 넣으면 할루시네이션을 줄일 수 있습니다.</div>
+    <h3>RAG 5-step Process</h3>
+    <div class="flow"><span class="step">Indexing</span><span class="arrow">→</span><span class="step">Query Processing</span><span class="arrow">→</span><span class="step">Searching</span><span class="arrow">→</span><span class="step">Augmenting</span><span class="arrow">→</span><span class="step">Generating</span></div>
+    <table><tr><th>단계</th><th>내용</th></tr><tr><td>Indexing</td><td>문서를 Chunking하고 Embedding 후 DB에 저장</td></tr><tr><td>Query Processing</td><td>질문을 검색하기 좋게 전처리·재구성</td></tr><tr><td>Searching</td><td>Semantic, Lexical, Hybrid Search 수행</td></tr><tr><td>Augmenting</td><td>검색 결과를 프롬프트 Context에 추가</td></tr><tr><td>Generating</td><td>LLM이 근거 기반 답변 생성</td></tr></table>
+    <h3>검색 방식</h3><ul><li><b>Semantic Search</b>: 임베딩 기반 의미 검색. 상담·고객문의에 강함</li><li><b>Lexical Search</b>: BM25/TF-IDF 기반 키워드 검색. 법령·조항·모델명에 강함</li><li><b>Hybrid Search</b>: 두 검색을 결합해 정확도 보완</li></ul>
+    <h3>고급 RAG 기법</h3><ul><li><b>Chunk Overlap</b>: 청크 간 일부 문맥을 겹쳐 의미 보존</li><li><b>Small2Big / Sliding Window</b>: 작은 청크로 검색하고 주변 큰 문맥 전달</li><li><b>Contextual Retrieval</b>: 청크 앞에 전체 문맥 기반 헤더 추가</li><li><b>HyDE</b>: 질문에 대한 가상 답변/문서를 만든 뒤 검색</li><li><b>Query Reformulation</b>: 하나의 질문을 여러 질문으로 바꿔 다중 검색</li><li><b>Reranker</b>: 검색된 청크를 다시 점수화해 재정렬</li><li><b>GraphRAG</b>: 문서를 그래프 형태로 저장·검색</li><li><b>Multimodal RAG</b>: 이미지·표·텍스트를 함께 검색</li></ul>
+    <h3>RAG 평가</h3><p>Retrieval과 Generation을 따로 평가해야 합니다. 주요 지표는 Faithfulness, Factual Correctness, Context Recall, BLEU, Semantic Similarity입니다.</p>
+  </section>
+
+  <section id="finetune">
+    <h2>6. LLM Fine-Tuning <span class="tag">중요</span></h2>
+    <p>Fine-Tuning은 이미 학습된 모델에 추가 데이터를 학습시켜 특정 목적의 성능을 높이는 방법입니다.</p>
+    <table><tr><th>기법</th><th>핵심 개념</th><th>특징</th></tr><tr><td>SFT</td><td>정답 데이터를 그대로 학습</td><td>가장 기본적인 방식</td></tr><tr><td>Continuous Pretraining</td><td>도메인/언어 코퍼스 추가 학습</td><td>지식 주입, 최신 정보 반영</td></tr><tr><td>Instruction Tuning</td><td>질의응답·지시 데이터 학습</td><td>명령 수행 능력 개선</td></tr><tr><td>RAFT</td><td>RAG 형식 데이터로 학습</td><td>문서 근거 기반 답변 강화</td></tr><tr><td>RLHF</td><td>인간 피드백 기반 보상 학습</td><td>선호 반영, Alignment</td></tr><tr><td>DPO</td><td>선호 쌍으로 직접 최적화</td><td>PPO보다 단순·안정적</td></tr><tr><td>LoRA</td><td>저차원 행렬 어댑터 추가</td><td>대표 PEFT, 메모리 절약</td></tr><tr><td>DoRA</td><td>Weight를 크기/방향으로 분해</td><td>LoRA 개선</td></tr></table>
+    <div class="box warn"><b>주의할 점</b><br>Fine-Tuning은 Catastrophic Forgetting과 Overfitting을 유발할 수 있습니다. 새 지식을 배우는 대신 기존 능력이 줄어들 수 있으므로 데이터 구성과 평가가 중요합니다.</div>
+    <h3>LoRA 암기</h3><p class="memorize">LoRA = 적은 파라미터만 학습해서 빠르고 저렴하게 튜닝</p><ul><li>기존 모델 가중치를 직접 바꾸지 않음</li><li>A/B 테스트와 버전 관리가 쉬움</li><li>Full Fine-Tuning보다 학습 효과가 약할 수 있음</li></ul>
+  </section>
+
+  <section id="final">
+    <h2>시험 직전 5분 암기</h2>
+    <div class="box quiz">
+      <p><b>Python</b>: List 변경 O, Tuple 변경 X, Dict는 Key-Value, 예외처리 try-except-finally, OOP는 클래스·상속·super()</p>
+      <p><b>전처리</b>: Cleaning → Regex → Tokenization → Normalization → Stopwords</p>
+      <p><b>LLM</b>: Embedding → Transformer → Self-Attention → Multi-Head → Encoder(BERT) / Decoder(GPT)</p>
+      <p><b>GPT</b>: Next Token Prediction, Autoregressive 생성, Masked Self-Attention</p>
+      <p><b>Prompt</b>: Persona, Task, Context, Format / CoT / ReAct / Few-shot</p>
+      <p><b>RAG</b>: Indexing → Query → Search → Augment → Generate</p>
+      <p><b>Fine-Tuning</b>: SFT, Instruction Tuning, RLHF, DPO, LoRA</p>
+    </div>
+  </section>
+
+  <footer>AI Advanced 핵심 강의 공부 노트 · 단일 HTML 파일</footer>
+</main>
+</body>
+</html>
